@@ -9,7 +9,197 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          booking_date: string
+          created_at: string
+          id: string
+          movie_id: string
+          payment_id: string | null
+          seats: number
+          show_time: string
+          status: string
+          theater_name: string | null
+          total_amount: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          booking_date?: string
+          created_at?: string
+          id?: string
+          movie_id: string
+          payment_id?: string | null
+          seats: number
+          show_time: string
+          status?: string
+          theater_name?: string | null
+          total_amount: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          booking_date?: string
+          created_at?: string
+          id?: string
+          movie_id?: string
+          payment_id?: string | null
+          seats?: number
+          show_time?: string
+          status?: string
+          theater_name?: string | null
+          total_amount?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_movie_id_fkey"
+            columns: ["movie_id"]
+            isOneToOne: false
+            referencedRelation: "movies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      movies: {
+        Row: {
+          available_seats: number | null
+          created_at: string
+          description: string | null
+          director: string | null
+          duration: number | null
+          genre: string[] | null
+          id: string
+          language: string | null
+          movie_cast: string[] | null
+          poster_url: string | null
+          price: number | null
+          rating: number | null
+          release_date: string | null
+          show_times: Json | null
+          theater_name: string | null
+          title: string
+          trailer_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          available_seats?: number | null
+          created_at?: string
+          description?: string | null
+          director?: string | null
+          duration?: number | null
+          genre?: string[] | null
+          id?: string
+          language?: string | null
+          movie_cast?: string[] | null
+          poster_url?: string | null
+          price?: number | null
+          rating?: number | null
+          release_date?: string | null
+          show_times?: Json | null
+          theater_name?: string | null
+          title: string
+          trailer_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          available_seats?: number | null
+          created_at?: string
+          description?: string | null
+          director?: string | null
+          duration?: number | null
+          genre?: string[] | null
+          id?: string
+          language?: string | null
+          movie_cast?: string[] | null
+          poster_url?: string | null
+          price?: number | null
+          rating?: number | null
+          release_date?: string | null
+          show_times?: Json | null
+          theater_name?: string | null
+          title?: string
+          trailer_url?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          city: string | null
+          created_at: string
+          date_of_birth: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+          phone: string | null
+          preferences: Json | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          preferences?: Json | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          phone?: string | null
+          preferences?: Json | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_preferences: {
+        Row: {
+          created_at: string
+          favorite_actors: string[] | null
+          id: string
+          preferred_genres: string[] | null
+          preferred_languages: string[] | null
+          price_range: Json | null
+          rating_threshold: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          favorite_actors?: string[] | null
+          id?: string
+          preferred_genres?: string[] | null
+          preferred_languages?: string[] | null
+          price_range?: Json | null
+          rating_threshold?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          favorite_actors?: string[] | null
+          id?: string
+          preferred_genres?: string[] | null
+          preferred_languages?: string[] | null
+          price_range?: Json | null
+          rating_threshold?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
